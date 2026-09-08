@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    # Estos datos son para tu entorno de desarrollo local si levantas un PostgreSQL con Docker
+    url: jdbc:postgresql://localhost:5432/coursehub
+    username: postgres
+    password: password
+
+  jpa:
+    hibernate:
+      # Regla de oro de la guía: Hibernate no crea tablas, solo valida.
+      ddl-auto: validate
+    # Muestra los parámetros de las consultas en los logs
+    properties:
+      hibernate:
+        format_sql: true
+
+# Activamos el logueo de SQL para ver las consultas reales que hace Spring Data
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
