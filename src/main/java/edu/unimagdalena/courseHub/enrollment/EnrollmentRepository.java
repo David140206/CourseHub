@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
 
-    // Consulta 4: Buscar estudiantes matriculados en un curso (JPQL)
+    // Buscar estudiantes matriculados en un curso
     @Query("""
         select e.student
         from Enrollment e
@@ -18,10 +18,10 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
     """)
     List<Student> findStudents(@Param("courseId") Long courseId, @Param("status") EnrollmentStatus status);
 
-    // Consulta 5: Contar matrículas activas (Query Method)
+    //  Contar matrículas activas
     long countByStatus(EnrollmentStatus status);
 
-    // Consulta 6: Obtener promedio de notas de un curso (JPQL con agregación)
+    //  Obtener promedio de notas de un curso
     @Query("""
         select avg(e.finalGrade)
         from Enrollment e
