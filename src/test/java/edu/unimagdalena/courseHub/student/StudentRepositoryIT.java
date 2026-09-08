@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @SpringBootTest
 class StudentRepositoryIT {
 
-    // Testcontainers levanta un PostgreSQL efímero solo para esta prueba
+
     @Container
     @ServiceConnection
     static PostgreSQLContainer postgres =
@@ -70,7 +70,7 @@ class StudentRepositoryIT {
 
     @Test
     void shouldRejectDuplicatedEmail() {
-        // Guardamos el primer estudiante y forzamos el SQL con flush
+
         studentRepository.saveAndFlush(
                 new Student(
                         "Ana",
@@ -79,7 +79,7 @@ class StudentRepositoryIT {
                 )
         );
 
-        // Intentamos guardar otro con el mismo email, esperando que la BD lo rechace
+
         assertThatThrownBy(() ->
                 studentRepository.saveAndFlush(
                         new Student(
